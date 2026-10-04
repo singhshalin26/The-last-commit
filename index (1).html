@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Last Commit | 24-hour Hackathon 2026</title>
+<meta name="description" content="The Last Commit: a 24-hour hackathon. One final commit. One chance to prove it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="loader" aria-hidden="true"><pre id="loader-text"></pre></div>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="glow" aria-hidden="true"></div>
+<div id="toast" role="status"></div>
+
+<header id="nav">
+  <div class="wrap nav-in">
+    <a href="#home" class="logo">THE LAST <b>COMMIT</b></a>
+    <button class="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <nav id="menu" aria-label="Main">
+      <a href="#home">HOME</a><a href="#about">ABOUT</a><a href="#challenge">CHALLENGE</a>
+      <a href="#timeline">TIMELINE</a><a href="#rules">RULES</a><a href="#prizes">PRIZES</a><a href="#faq">FAQ</a>
+      <a href="#register" class="btn btn-sm">REGISTER NOW</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="chips"><span class="chip"><i class="dot"></i>SERVER ONLINE</span><span class="chip">PING <b id="ping">12</b>ms</span><span class="chip">128 TEAMS READY</span></p>
+      <h1>THE LAST<span class="glitch" data-text="COMMIT.">COMMIT.</span></h1>
+      <p class="lead">One final commit.<br>One final chance.<br>One project that changes everything.</p>
+      <p class="meta"><b>14 NOV 2026</b>, 10:00 AM IST &nbsp;|&nbsp; Online + Chennai hub</p>
+      <div class="actions"><a href="#register" class="btn">REGISTER NOW</a><a href="#challenge" class="btn ghost">VIEW CHALLENGES</a></div>
+    </div>
+    <div class="term" aria-label="Animated terminal">
+      <div class="term-bar"><i></i><i></i><i></i><span>final-attempt: bash</span></div>
+      <pre id="hero-term" class="term-body"></pre>
+    </div>
+  </div>
+</section>
+
+<section class="count-sec">
+  <div class="wrap">
+    <p class="center muted" id="count-label">COMMIT WINDOW OPENS IN</p>
+    <div class="count" id="countdown">
+      <div><b id="cd-d">00</b><span>DAYS</span></div><div><b id="cd-h">00</b><span>HOURS</span></div>
+      <div><b id="cd-m">00</b><span>MINUTES</span></div><div><b id="cd-s">00</b><span>SECONDS</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap two">
+    <div class="reveal">
+      <h2>Every project reaches one final commit.</h2>
+      <p>You have written hundreds of lines of code. But what happens when there is only one commit left?</p>
+      <p>For 24 hours you and your team enter a digital arena. You build, solve and deploy something that matters. When the clock hits zero, the repo locks. Whatever you pushed is what the judges see.</p>
+    </div>
+    <div class="stats" id="stats"></div>
+  </div>
+</section>
+
+<section id="challenge">
+  <div class="wrap">
+    <h2 class="center reveal">Your code is the answer.</h2>
+    <div class="grid4" id="challenge-grid"></div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap narrow">
+    <h2 class="center reveal">How it works</h2>
+    <ol class="steps" id="steps"></ol>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap narrow">
+    <h2 class="center reveal">Hackathon timeline</h2>
+    <ul class="tl" id="schedule"></ul>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap narrow">
+    <h2 class="center reveal">Rules of the arena</h2>
+    <div id="rules-list"></div>
+  </div>
+</section>
+
+<section id="prizes">
+  <div class="wrap">
+    <h2 class="center reveal">Prizes</h2>
+    <div class="prizes" id="prize-grid"></div>
+    <div class="special" id="special"></div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <h2 class="center reveal">Bring your own stack</h2>
+    <div class="grid5" id="stack-grid"></div>
+  </div>
+</section>
+
+<section id="terminal">
+  <div class="wrap narrow">
+    <h2 class="center reveal">Try the terminal</h2>
+    <p class="center muted">Type a command or tap a button. Try <code>help</code>.</p>
+    <div class="term big reveal">
+      <div class="term-bar"><i></i><i></i><i></i><span>guest@last-commit: ~</span></div>
+      <div id="term-out" class="term-body" aria-live="polite"></div>
+      <form id="term-form" class="term-in" autocomplete="off">
+        <label for="term-input">$</label><input id="term-input" spellcheck="false" aria-label="Terminal command">
+      </form>
+    </div>
+    <div class="quick" id="quick"></div>
+  </div>
+</section>
+
+<section id="leaderboard">
+  <div class="wrap narrow">
+    <h2 class="center reveal">Live leaderboard <small class="muted">(sample data)</small></h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>RANK</th><th>TEAM</th><th>SCORE</th><th>STATUS</th></tr></thead>
+      <tbody id="board"></tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap narrow">
+    <h2 class="center reveal">FAQ</h2>
+    <div id="faq-list"></div>
+  </div>
+</section>
+
+<section id="register" class="cta">
+  <div class="wrap center">
+    <h2 class="big-h">READY TO MAKE<br>YOUR LAST COMMIT?</h2>
+    <p class="lead">Your branch is waiting.</p>
+    <button class="btn" id="commit-btn">[ MAKE YOUR COMMIT ]</button>
+    <pre id="cta-term" class="term-body cta-term" aria-live="polite"></pre>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div><b class="logo">THE LAST <b>COMMIT</b></b><p class="muted">One final commit. Infinite possibilities.</p></div>
+    <nav aria-label="Footer"><a href="#home">Home</a><a href="#about">About</a><a href="#challenge">Challenges</a><a href="#timeline">Timeline</a><a href="#rules">Rules</a><a href="#faq">FAQ</a></nav>
+    <div class="social"><a href="https://github.com" aria-label="GitHub">GitHub</a><a href="https://instagram.com" aria-label="Instagram">Instagram</a><a href="https://linkedin.com" aria-label="LinkedIn">LinkedIn</a><a href="https://discord.com" aria-label="Discord">Discord</a></div>
+  </div>
+  <p class="center muted copy">&copy; 2026 The Last Commit. All rights reserved.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
